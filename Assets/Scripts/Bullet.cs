@@ -5,19 +5,19 @@
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    private int damage = 1;
+    protected int damage = 1;
 
-    private Collider2D myCollider;
-    private Rigidbody2D myRigidbody;
-
-    [SerializeField]
-    private float force = 10F;
+    protected Collider2D myCollider;
+    protected Rigidbody2D myRigidbody;
 
     [SerializeField]
-    private float autoDestroyTime = 5F;
+    protected float force = 10F;
+
+    [SerializeField]
+    protected float autoDestroyTime = 5F;
 
     // Use this for initialization
-    private void Start()
+    protected void Start()
     {
         myCollider = GetComponent<Collider2D>();
         myRigidbody = GetComponent<Rigidbody2D>();
@@ -27,9 +27,9 @@ public class Bullet : MonoBehaviour
         Invoke("AutoDestroy", autoDestroyTime);
     }
 
-    private void AutoDestroy()
+    protected void AutoDestroy()
     {
         Destroy(gameObject);
-        Destroy(gameObject);
+        
     }
 }

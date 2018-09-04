@@ -8,9 +8,9 @@ public class Hazard : MonoBehaviour
     private object myRigidbody;
 
     [SerializeField]
-    private float resistance = 1F;
+    protected float resistance = 1F;
 
-    private float spinTime = 1F;
+    protected float spinTime = 1F;
 
     // Use this for initialization
     protected void Start()
@@ -31,6 +31,21 @@ public class Hazard : MonoBehaviour
                 OnHazardDestroyed();
             }
         }
+        if (collision.gameObject.GetComponent<Shelter>() != null)
+        {
+            
+            resistance -= 1;
+
+            if (resistance == 0)
+            {
+                OnHazardDestroyed();
+            }
+        }
+
+        if (collision != null)
+        {
+            OnHazardDestroyed();
+        }
     }
 
     protected void OnHazardDestroyed()
@@ -38,4 +53,6 @@ public class Hazard : MonoBehaviour
         //TODO: GameObject should spin for 'spinTime' secs. then disappear
         Destroy(gameObject);
     }
+
+    
 }
