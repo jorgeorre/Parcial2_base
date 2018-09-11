@@ -15,14 +15,12 @@ public static class SpawnerExtensions
 public class HazardSpawner : MonoBehaviour
 {
     [SerializeField]
-    public GameObject hazardTemplate;
-    public GameObject debrisTemplate;
-    public GameObject InvaderTemplate;
+    private GameObject hazardTemplate;
 
-    private Collider2D myCollider;
+    protected Collider2D myCollider;
 
     [SerializeField]
-    private float spawnFrequency = 1F;
+    protected float spawnFrequency = 1F;
 
     // Use this for initialization
     private void Start()
@@ -34,15 +32,13 @@ public class HazardSpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (hazardTemplate == null && debrisTemplate == null && InvaderTemplate == null)
+        if (hazardTemplate == null)
         {
             CancelInvoke();
         }
         else
         {
-            Instantiate(hazardTemplate, myCollider.GetPointInVolume(), transform.rotation);
-            Instantiate(debrisTemplate, myCollider.GetPointInVolume(), transform.rotation);
-            Instantiate(InvaderTemplate, myCollider.GetPointInVolume(), transform.rotation);
+            Instantiate(hazardTemplate, myCollider.GetPointInVolume(), transform.);
         }
     }
 }

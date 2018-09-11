@@ -40,7 +40,7 @@ public class Shelter : MonoBehaviour
 
     private void OnShelterDestroy()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
 
     }
 }

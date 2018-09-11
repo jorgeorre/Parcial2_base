@@ -2,27 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebrisSpawner : HazardSpawner {
+public class InvaderSpawner : HazardSpawner {
 
-    public GameObject debrisTemplate;
+    public GameObject invaderTemplate;
 
 
     private void Start()
     {
         myCollider = GetComponent<Collider2D>();
-        spawnFrequency = 2.8F;
+        spawnFrequency = 4.8F;
         InvokeRepeating("SpawnEnemy", 0.2F, spawnFrequency);
     }
 
     private void SpawnEnemy()
     {
-        if (debrisTemplate == null)
+        if (invaderTemplate == null)
         {
             CancelInvoke();
         }
         else
         { 
-            Instantiate(debrisTemplate, myCollider.GetPointInVolume(), transform.rotation);
+            Instantiate(invaderTemplate, myCollider.GetPointInVolume(), transform.rotation);
         }
     }
 }
